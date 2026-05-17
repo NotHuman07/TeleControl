@@ -7,12 +7,12 @@ from dotenv import load_dotenv
 load_dotenv()
 bot = telebot.TeleBot(os.getenv("BOT_TOKEN"))
 
-CHAT_ID = os.getenv("CHAT_ID")
+CHAT_ID = (int(chat_id) for chat_id in os.getenv("CHAT_ID").split(","))
 
-from src.handlers import resgister_handlers
-from src.network import watch_network
+from src.handlers import register_handlers
+from src.services.network import watch_network
 
-resgister_handlers(bot)
+register_handlers(bot)
 
 thread = threading.Thread(target=watch_network, args=(bot, CHAT_ID))
 thread.daemon = True

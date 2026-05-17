@@ -1,7 +1,7 @@
 from src.utils.auth import is_allowed
 from src.services import system
 
-def resgister_handlers(bot):
+def register_handlers(bot):
 
     @bot.message_handler(commands=['start'])
     def start(message):
@@ -23,6 +23,8 @@ def resgister_handlers(bot):
         if not is_allowed(bot, message): return
         try:
             bot.reply_to(message, system.cpu_usage())
+        except Exception as e:
+            bot.reply_to(message, f"cpu error: {str(e)}")
 
     @bot.message_handler(commands=['disk'])
     def disk_usage(message):
@@ -54,11 +56,11 @@ def resgister_handlers(bot):
             bot.reply_to(message, f"screenshot error: {str(e)}")
     
     @bot.message_handler(commands=['shell'])
-def shell(message):
-    if not is_allowed(bot, message): return
-    try:
-        parts = message.text.split(' ', 1)
-        if len(parts) < 2:
+    def shell(message):
+        if not is_allowed(bot, message): return
+        try:
+            parts = message.text.split(' ', 1)
+            if len(parts) < 2:
                 bot.reply_to(message, "Usage: /shell <command>\nExample: /shell ls -la")
                 return
             bot.reply_to(message, system.shell(parts[1]))
