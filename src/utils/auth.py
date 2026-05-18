@@ -1,7 +1,7 @@
 import os
 import logging
 
-ALLOWED_USER = [int(chat_id) for chat_id in os.getenv("CHAT_ID").split(",")]
+ALLOWED_USER = [int(os.getenv("ADMIN_ID"))]
 
 def is_allowed(bot, message):
     if message.chat.id not in ALLOWED_USER:
