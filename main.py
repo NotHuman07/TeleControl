@@ -7,7 +7,6 @@ from src.utils.logger import init_db
 from src.config import BOT_TOKEN, ADMIN_ID
 init_db()
 
-load_dotenv()
 bot = telebot.TeleBot(BOT_TOKEN)
 
 from src.handlers import register_handlers

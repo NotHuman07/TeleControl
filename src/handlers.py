@@ -1,6 +1,7 @@
 from src.utils.auth import is_allowed
 from src.services import system
 from src.utils.logger import log_command
+from src.config import DB_PATH
 import sqlite3
 
 def register_handlers(bot):
@@ -79,7 +80,7 @@ def register_handlers(bot):
     def logs(message):
         if not is_allowed(bot, message): return
         try:
-            conn = sqlite3.connect('/home/falcon/api_project/falconbot.db')
+            conn = sqlite3.connect(DB_PATH)
             c = conn.cursor()
             c.execute("SELECT timestamp, username, command FROM logs ORDER BY id DESC LIMIT 10")
 
