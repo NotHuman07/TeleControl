@@ -1,11 +1,11 @@
 import subprocess
 import os
 import time
-
+from src.config import NETSPY_PATH, SCREENSHOT_DIR
 
 def who_is_on_wifi():
 
-    result = subprocess.run(['bash', '/usr/local/bin/netspy'], capture_output=True, text=True)
+    result = subprocess.run(['bash', NETSPY_PATH], capture_output=True, text=True)
     
     import re
     clean = re.sub(r'\x1b\[[0-9;]*m', '', result.stdout)
@@ -32,7 +32,7 @@ def temp():
 
 def screenshot():
 
-    filename = f'/tmp/screen_{int(time.time())}.png'
+    filename = f'{SCREENSHOT_DIR}/screen_{int(time.time())}.png'
     os.system(f'scrot {filename}')
     return filename
 

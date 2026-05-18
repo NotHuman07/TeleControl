@@ -4,13 +4,12 @@ import os
 import platform
 from dotenv import load_dotenv
 from src.utils.logger import init_db
-
+from src.config import BOT_TOKEN, ADMIN_ID
 init_db()
 
 load_dotenv()
-bot = telebot.TeleBot(os.getenv("BOT_TOKEN"))
+bot = telebot.TeleBot(BOT_TOKEN)
 
-ADMIN_ID = int(os.getenv("ADMIN_ID"))
 from src.handlers import register_handlers
 from src.services.network import watch_network
 

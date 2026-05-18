@@ -1,7 +1,6 @@
 import os
 import logging
-
-ALLOWED_USER = [int(os.getenv("ADMIN_ID"))]
+from src.config import ALLOWED_USER
 
 def is_allowed(bot, message):
     if message.chat.id not in ALLOWED_USER:
