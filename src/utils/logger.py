@@ -1,8 +1,7 @@
 import sqlite3
 import logging
 from datetime import datetime
-
-DB_PATH = '/home/falcon/api_project/falconbot.db'
+from src.config import DB_PATH
 
 def init_db():
     conn = sqlite3.connect(DB_PATH)
