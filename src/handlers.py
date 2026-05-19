@@ -1,5 +1,6 @@
 from src.utils.auth import is_allowed
 from src.services import system
+from src.config import DB_PATH
 from src.utils.logger import log_command
 from src.config import DB_PATH
 import sqlite3
