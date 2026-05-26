@@ -9,6 +9,7 @@ BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
 CHAT_ID = os.getenv("CHAT_ID")
 ALLOWED_USER = [int(id) for id in CHAT_ID.split(",")]
+SECRET_PIN = os.getenv("SECRET_PIN")
 
 DB_PATH = os.getenv("DB_PATH", str(BASE_DIR / 'falconbot.db'))
 SCREENSHOT_DIR = os.getenv("SCREENSHOT_PATH", "/tmp")
